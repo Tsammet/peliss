@@ -1,64 +1,97 @@
 package com.pelis.pelispractica.domain.entities;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
+import java.time.Year;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "peliculas")
 public class Pelicula {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_pelicula;
-
-    @Column(columnDefinition = "VARCHAR(255)", nullable = false)
-    private String titulo;
-
-    @Column(columnDefinition = "TEXT", nullable = false)
-    private String descripcion;
-
-    @Column(columnDefinition = "YEAR", nullable = false)
-    private Date anyo_lanzamiento;
     
-    // @ManyToOne
-    // @JoinTable(name = "id_idioma")
-    // private Idioma idiomas;
 
-    // @ManyToOne
-    // @JoinTable(name = "id_idioma_original")
-    // private Idioma id_idioma;
+    public enum Clasificacion {
+        G,
+        PG,
+        PG_13,
+        R,
+        NC_17
+    }
+    @Id
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private Short id_pelicula;
 
-    @Column(columnDefinition = "TINYINT", nullable = false)
-    private int duracion_alquiler;
+    @Column(columnDefinition = "VARCHAR(255)", nullable= false)
+    private String titulo;
+    
+    @Column(columnDefinition = "TEXT", nullable= false)
+    private String descripcion;
+    
+    @Column(columnDefinition = "YEAR", nullable= false)
+    private Year agnio_lanzamiento;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_idioma")
+    private Idioma id_idioma;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_idioma_original")
+    private Idioma id_idioma_original;
+    
+    @Column(columnDefinition = "TINYINT", nullable= false)
+    private Short duracion_alquiler;
+    
+    @Column(columnDefinition = "DECIMAL(4,2)", nullable= false)
+    private Double rental_date;
+    
+    @Column(columnDefinition = "SMALLINT", nullable= false)
+    private Short duracion;
+    
+    @Column(columnDefinition = "DECIMAL(5,2)", nullable= false)
+    private Double replacement_cost;
 
-    @Column(columnDefinition = "DECIMAL(4,2)", nullable = false)
-    private double rental_rate;
-
-    @Column(columnDefinition = "SMALLINT", nullable = false)
-    private int duracion;
-
-    @Column(columnDefinition = "DECIMAL(5,2)", nullable = false)
-    private Long replacement_cost;
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private Clasificacion clasificacion;
 
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
-    private Date ultima_actualizacion;
+    private LocalDateTime ultima_actualizacion;
 
     public Pelicula() {
     }
 
-    public Long getId_pelicula() {
+    public Pelicula(Short id_pelicula, String titulo, String descripcion, Year agnio_lanzamiento, Idioma id_idioma,
+            Idioma id_idioma_original, Short duracion_alquiler, Double rental_date, Short duracion,
+            Double replacement_cost, Clasificacion clasificacion, LocalDateTime ultima_actualizacion) {
+        this.id_pelicula = id_pelicula;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.agnio_lanzamiento = agnio_lanzamiento;
+        this.id_idioma = id_idioma;
+        this.id_idioma_original = id_idioma_original;
+        this.duracion_alquiler = duracion_alquiler;
+        this.rental_date = rental_date;
+        this.duracion = duracion;
+        this.replacement_cost = replacement_cost;
+        this.clasificacion = clasificacion;
+        this.ultima_actualizacion = ultima_actualizacion;
+    }
+
+    public Short getId_pelicula() {
         return id_pelicula;
     }
 
-    public void setId_pelicula(Long id_pelicula) {
+    public void setId_pelicula(Short id_pelicula) {
         this.id_pelicula = id_pelicula;
     }
 
@@ -78,61 +111,78 @@ public class Pelicula {
         this.descripcion = descripcion;
     }
 
-    public Date getAnyo_lanzamiento() {
-        return anyo_lanzamiento;
+    public Year getAgnio_lanzamiento() {
+        return agnio_lanzamiento;
     }
 
-    public void setAnyo_lanzamiento(Date anyo_lanzamiento) {
-        this.anyo_lanzamiento = anyo_lanzamiento;
+    public void setAgnio_lanzamiento(Year agnio_lanzamiento) {
+        this.agnio_lanzamiento = agnio_lanzamiento;
     }
 
-    // public Idioma getIdiomas() {
-    //     return idiomas;
-    // }
+    public Idioma getId_idioma() {
+        return id_idioma;
+    }
 
-    // public void setIdiomas(Idioma idiomas) {
-    //     this.idiomas = idiomas;
-    // }
+    public void setId_idioma(Idioma id_idioma) {
+        this.id_idioma = id_idioma;
+    }
 
-    public int getDuracion_alquiler() {
+    public Idioma getId_idioma_original() {
+        return id_idioma_original;
+    }
+
+    public void setId_idioma_original(Idioma id_idioma_original) {
+        this.id_idioma_original = id_idioma_original;
+    }
+
+    public Short getDuracion_alquiler() {
         return duracion_alquiler;
     }
 
-    public void setDuracion_alquiler(int duracion_alquiler) {
+    public void setDuracion_alquiler(Short duracion_alquiler) {
         this.duracion_alquiler = duracion_alquiler;
     }
 
-    public double getRental_rate() {
-        return rental_rate;
+    public Double getRental_date() {
+        return rental_date;
     }
 
-    public void setRental_rate(double rental_rate) {
-        this.rental_rate = rental_rate;
+    public void setRental_date(Double rental_date) {
+        this.rental_date = rental_date;
     }
 
-    public int getDuracion() {
+    public Short getDuracion() {
         return duracion;
     }
 
-    public void setDuracion(int duracion) {
+    public void setDuracion(Short duracion) {
         this.duracion = duracion;
     }
 
-    public Long getReplacement_cost() {
+    public Double getReplacement_cost() {
         return replacement_cost;
     }
 
-    public void setReplacement_cost(Long replacement_cost) {
+    public void setReplacement_cost(Double replacement_cost) {
         this.replacement_cost = replacement_cost;
     }
 
-    public Date getUltima_actualizacion() {
+    public Clasificacion getClasificacion() {
+        return clasificacion;
+    }
+
+    public void setClasificacion(Clasificacion clasificacion) {
+        this.clasificacion = clasificacion;
+    }
+
+    public LocalDateTime getUltima_actualizacion() {
         return ultima_actualizacion;
     }
 
-    public void setUltima_actualizacion(Date ultima_actualizacion) {
+    public void setUltima_actualizacion(LocalDateTime ultima_actualizacion) {
         this.ultima_actualizacion = ultima_actualizacion;
     }
 
-
+    
+    
 }

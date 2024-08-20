@@ -1,6 +1,6 @@
 package com.pelis.pelispractica.domain.entities;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -15,22 +15,28 @@ public class Idioma {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_idioma;
+    private Short id_idioma;
     
-    @Column(columnDefinition = "CHAR(20)", nullable = false)
+    @Column(columnDefinition = "Char(20)", nullable = false)
     private String nombre;
 
-    @Column(columnDefinition = "TIMESTAMP", nullable = true)
-    private Date ultima_actualizacion;
+    @Column(columnDefinition = "TIMESTAMP", nullable = false)
+    private LocalDateTime ultima_actualizacion;
 
     public Idioma() {
     }
 
-    public Long getId_idioma() {
+    public Idioma(Short id_idioma, String nombre, LocalDateTime ultima_actualizacion) {
+        this.id_idioma = id_idioma;
+        this.nombre = nombre;
+        this.ultima_actualizacion = ultima_actualizacion;
+    }
+
+    public Short getId_idioma() {
         return id_idioma;
     }
 
-    public void setId_idioma(Long id_idioma) {
+    public void setId_idioma(Short id_idioma) {
         this.id_idioma = id_idioma;
     }
 
@@ -42,13 +48,13 @@ public class Idioma {
         this.nombre = nombre;
     }
 
-    public Date getUltima_actualizacion() {
+    public LocalDateTime getUltima_actualizacion() {
         return ultima_actualizacion;
     }
 
-    public void setUltima_actualizacion(Date ultima_actualizacion) {
+    public void setUltima_actualizacion(LocalDateTime ultima_actualizacion) {
         this.ultima_actualizacion = ultima_actualizacion;
     }
 
-
+    
 }

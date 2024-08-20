@@ -1,6 +1,6 @@
 package com.pelis.pelispractica.domain.entities;
 
-import java.sql.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -17,7 +17,7 @@ public class Ciudad {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_ciudad;
+    private Short id_ciudad;
 
     @Column(columnDefinition = "VARCHAR(50)", nullable = false)
     private String nombre;
@@ -25,18 +25,25 @@ public class Ciudad {
     @ManyToOne
     @JoinColumn(name = "id_pais")
     private Pais paises;
-    
+
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
-    private Date ultima_actualizacion;
+    private LocalDateTime ultima_actualizacion;
 
     public Ciudad() {
     }
 
-    public Long getId_ciudad() {
+    public Ciudad(Short id_ciudad, String nombre, Pais paises, LocalDateTime ultima_actualizacion) {
+        this.id_ciudad = id_ciudad;
+        this.nombre = nombre;
+        this.paises = paises;
+        this.ultima_actualizacion = ultima_actualizacion;
+    }
+
+    public Short getId_ciudad() {
         return id_ciudad;
     }
 
-    public void setId_ciudad(Long id_ciudad) {
+    public void setId_ciudad(Short id_ciudad) {
         this.id_ciudad = id_ciudad;
     }
 
@@ -56,13 +63,12 @@ public class Ciudad {
         this.paises = paises;
     }
 
-    public Date getUltima_actualizacion() {
+    public LocalDateTime getUltima_actualizacion() {
         return ultima_actualizacion;
     }
 
-    public void setUltima_actualizacion(Date ultima_actualizacion) {
+    public void setUltima_actualizacion(LocalDateTime ultima_actualizacion) {
         this.ultima_actualizacion = ultima_actualizacion;
     }
-
 
 }
