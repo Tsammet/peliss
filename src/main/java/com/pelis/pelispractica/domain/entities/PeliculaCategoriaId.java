@@ -9,7 +9,7 @@ import jakarta.persistence.Embeddable;
 public class PeliculaCategoriaId implements Serializable{
 
     @Column(name = "id_pelicula")
-    private Integer id_pelicula;
+    private Short id_pelicula;
 
     @Column(name = "id_categoria")
     private Integer id_categoria;
@@ -17,11 +17,11 @@ public class PeliculaCategoriaId implements Serializable{
     public PeliculaCategoriaId() {
     }
 
-    public Integer getId_pelicula() {
+    public Short getId_pelicula() {
         return id_pelicula;
     }
 
-    public void setId_pelicula(Integer id_pelicula) {
+    public void setId_pelicula(Short id_pelicula) {
         this.id_pelicula = id_pelicula;
     }
 

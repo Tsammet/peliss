@@ -16,7 +16,7 @@ public class Categoria {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Short id_categoria;
+    private Integer id_categoria;
 
     @Column(columnDefinition = "VARCHAR(25)", nullable = false)
     private String nombre;
@@ -27,17 +27,17 @@ public class Categoria {
     public Categoria() {
     }
 
-    public Categoria(Short id_categoria, String nombre, LocalDateTime ultima_actualizacion) {
+    public Categoria(Integer id_categoria, String nombre, LocalDateTime ultima_actualizacion) {
         this.id_categoria = id_categoria;
         this.nombre = nombre;
         this.ultima_actualizacion = ultima_actualizacion;
     }
 
-    public Short getId_categoria() {
+    public Integer getId_categoria() {
         return id_categoria;
     }
 
-    public void setId_categoria(Short id_categoria) {
+    public void setId_categoria(Integer id_categoria) {
         this.id_categoria = id_categoria;
     }
 

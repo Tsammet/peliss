@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class PeliculaCategoria {
 
     @EmbeddedId
-    PeliculaCategoriaId id;
+    private PeliculaCategoriaId id;
     
     @Column(columnDefinition = "TIMESTAMP", nullable = false)
     private LocalDateTime ultima_actualizacion;
@@ -26,6 +26,7 @@ public class PeliculaCategoria {
     @ManyToOne
     @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
     private Categoria categorias;
+
 
     public PeliculaCategoria() {
     }
