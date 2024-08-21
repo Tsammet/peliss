@@ -9,27 +9,27 @@ import jakarta.persistence.Embeddable;
 public class PeliculaActorPK  implements Serializable{
 
     @Column(name = "id_pelicula")
-    private Short idpelicula;
+    private Long idpelicula;
 
     @Column(name = "id_actor")
-    private Short idactor;
+    private Long idactor;
 
     public PeliculaActorPK() {
     }
 
-    public Short getIdpelicula() {
+    public Long getIdpelicula() {
         return idpelicula;
     }
 
-    public void setIdpelicula(Short idpelicula) {
+    public void setIdpelicula(Long idpelicula) {
         this.idpelicula = idpelicula;
     }
 
-    public Short getIdactor() {
+    public Long getIdactor() {
         return idactor;
     }
 
-    public void setIdactor(Short idactor) {
+    public void setIdactor(Long idactor) {
         this.idactor = idactor;
     }
 
