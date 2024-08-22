@@ -13,7 +13,7 @@ public interface ActorService {
 
     Optional<Actor> findOneById(Long id);
 
-    Actor createOne(Actor actor);
+    Actor save(Actor actor);
     
     // Optional<Actor>delete(Long id);
 

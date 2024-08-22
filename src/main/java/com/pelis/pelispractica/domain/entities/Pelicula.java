@@ -28,7 +28,7 @@ public class Pelicula {
     }
     @Id
     @GeneratedValue(strategy =  GenerationType.IDENTITY)
-    private Short id_pelicula;
+    private Long id_pelicula;
 
     @Column(columnDefinition = "VARCHAR(255)", nullable= false)
     private String titulo;
@@ -69,7 +69,7 @@ public class Pelicula {
     public Pelicula() {
     }
 
-    public Pelicula(Short id_pelicula, String titulo, String descripcion, Year agnio_lanzamiento, Idioma id_idioma,
+    public Pelicula(Long id_pelicula, String titulo, String descripcion, Year agnio_lanzamiento, Idioma id_idioma,
             Idioma id_idioma_original, Short duracion_alquiler, Double rental_date, Short duracion,
             Double replacement_cost, Clasificacion clasificacion, LocalDateTime ultima_actualizacion) {
         this.id_pelicula = id_pelicula;
@@ -86,11 +86,11 @@ public class Pelicula {
         this.ultima_actualizacion = ultima_actualizacion;
     }
 
-    public Short getId_pelicula() {
+    public Long getId_pelicula() {
         return id_pelicula;
     }
 
-    public void setId_pelicula(Short id_pelicula) {
+    public void setId_pelicula(Long id_pelicula) {
         this.id_pelicula = id_pelicula;
     }
 

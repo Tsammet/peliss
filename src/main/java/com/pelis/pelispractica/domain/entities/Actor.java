@@ -1,5 +1,6 @@
 package com.pelis.pelispractica.domain.entities;
 
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
@@ -7,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "actores")
@@ -15,7 +17,8 @@ public class Actor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_actor;
-    
+
+    @NotNull(message = "blablablabla")
     @Column(columnDefinition = "VARCHAR(45)", nullable = false)
     private String nombre;
     
@@ -70,8 +73,7 @@ public class Actor {
 
     public void setAudit(Audit audit) {
         this.audit = audit;
-    }    
-
+    }
 
 
 }

@@ -31,7 +31,7 @@ public class ActorImpl implements ActorService {
     }
 
     @Override
-    public Actor createOne(Actor actor) {
+    public Actor save(Actor actor) {
         return actorRepository.save(actor);
     }
 
