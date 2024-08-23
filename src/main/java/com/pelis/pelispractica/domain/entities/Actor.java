@@ -8,7 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotNull;
+// import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "actores")
@@ -18,15 +18,12 @@ public class Actor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_actor;
 
-    @NotNull(message = "blablablabla")
+    // @NotNull(message = "blablablabla")
     @Column(columnDefinition = "VARCHAR(45)", nullable = false)
     private String nombre;
     
     @Column(columnDefinition = "VARCHAR(45)", nullable = false)
     private String apellidos;
-    
-    // @Column(columnDefinition = "TIMESTAMP", nullable = false)
-    // private LocalDateTime ultima_actualizacion;
     
     @Embedded
     private Audit audit = new Audit();
@@ -59,14 +56,6 @@ public class Actor {
         this.apellidos = apellidos;
     }    
 
-    // public LocalDateTime getUltima_actualizacion() {
-    //     return ultima_actualizacion;    
-    // }
-
-    // public void setUltima_actualizacion(LocalDateTime ultima_actualizacion) {
-    //     this.ultima_actualizacion = ultima_actualizacion;    
-    // }
-
     public Audit getAudit() {
         return audit;
     }    
@@ -74,6 +63,5 @@ public class Actor {
     public void setAudit(Audit audit) {
         this.audit = audit;
     }
-
 
 }
